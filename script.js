@@ -9,61 +9,49 @@ const rates = {
     "Any Available": 13
 };
 
-function calculatePrice() {
-
-    if (typeof google === "undefined") {
-        alert("Google Maps not loaded. Check API key.");
-        return;
-    }
-
+async function calculatePrice() {
     const from = document.getElementById("from").value.trim();
     const to = document.getElementById("to").value.trim();
     const vehicle = document.getElementById("vehicle").value;
 
     if (!from || !to || !vehicle) {
-        alert("Please enter From, To and select Vehicle");
+        alert("Please fill all fields");
         return;
     }
 
-    const service = new google.maps.DistanceMatrixService();
+    try {
+        const res = await fetch("http://localhost:5000/calculate-distance", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ from, to })
+        });
 
-    service.getDistanceMatrix({
-        origins: [from],
-        destinations: [to],
-        travelMode: google.maps.TravelMode.DRIVING,
-        unitSystem: google.maps.UnitSystem.METRIC
-    }, function (response, status) {
+        const data = await res.json();
 
-        if (status !== "OK") {
-            alert("Distance calculation failed: " + status);
+        if (!res.ok) {
+            alert(data.error || "Distance error");
             return;
         }
 
-        const result = response.rows[0].elements[0];
-
-        if (result.status !== "OK") {
-            alert("Route not found. Use full place names.");
-            return;
-        }
-
-        finalDistance = result.distance.value / 1000;
+        finalDistance = data.distanceKm;
         finalPrice = Math.round(finalDistance * rates[vehicle]);
 
         document.getElementById("price").innerText = finalPrice;
         document.getElementById("priceBox").classList.remove("hidden");
-    });
+
+    } catch {
+        alert("Backend not reachable");
+    }
 }
 
 function sendWhatsApp() {
     if (finalPrice === 0) {
-        alert("Please calculate price first");
+        alert("Calculate price first");
         return;
     }
 
     const message =
         `Hello Safar Mitra\n` +
-        `Name: ${name.value}\n` +
-        `Phone: ${phone.value}\n` +
         `From: ${from.value}\n` +
         `To: ${to.value}\n` +
         `Vehicle: ${vehicle.value}\n` +
