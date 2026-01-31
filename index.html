@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safar Mitra | Premium One-Way Taxi Service</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Maps JS API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=My-Key"></script>
+</head>
+
+<body class="bg-gray-50 font-sans">
+
+<!-- HEADER -->
+<header class="bg-navy text-white sticky top-0 z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="text-2xl font-bold tracking-tight">
+            <span class="text-safar-yellow">Safar</span> Mitra
+        </div>
+
+        <a href="tel:916205081544"
+           class="bg-safar-yellow text-navy px-5 py-2 rounded-full font-bold text-sm hover:scale-105 transition">
+            Call Now
+        </a>
+    </div>
+</header>
+
+<!-- HERO + BOOKING -->
+<section class="bg-navy py-16 md:py-24">
+    <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+
+        <!-- LEFT -->
+        <div class="text-white">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                Reliable <span class="text-safar-yellow">One-Way</span><br>Taxi Service
+            </h1>
+            <p class="mt-4 text-gray-300 text-lg">
+                Pay only for the distance you travel.  
+                No return fare. Trusted cab service in Bihar.
+            </p>
+        </div>
+
+        <!-- FORM -->
+        <div class="bg-white rounded-2xl shadow-2xl p-6 md:p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+                Book Your Journey
+            </h3>
+
+            <form class="space-y-4" onsubmit="sendWhatsApp(); return false;">
+
+                <input id="name" type="text" placeholder="Your Name" required class="input">
+                <input id="phone" type="tel" placeholder="Phone Number" required class="input">
+                <input id="from" type="text" placeholder="Pickup Location" required class="input">
+                <input id="to" type="text" placeholder="Drop Location" required class="input">
+
+                <div class="grid grid-cols-2 gap-4">
+                    <input id="date" type="date" required class="input">
+                    <input id="time" type="time" required class="input">
+                </div>
+
+                <select id="vehicle" required class="input">
+                    <option value="">Select Vehicle</option>
+                    <option>Bolero</option>
+                    <option>Grand i10</option>
+                    <option>Ertiga</option>
+                    <option>Scorpio</option>
+                    <option>Any Available</option>
+                </select>
+
+                <div class="flex items-center gap-3">
+                    <button type="button" onclick="calculatePrice()" class="calc-btn">
+                        Calculate Price
+                    </button>
+
+                    <div id="priceBox" class="hidden price-box">
+                        ₹ <span id="price"></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Send on WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/916205081544" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp text-3xl"></i>
+</a>
+
+<!-- Custom JS -->
+<script src="script.js"></script>
+
+</body>
+</html>

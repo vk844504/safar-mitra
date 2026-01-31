@@ -1,0 +1,75 @@
+.bg-navy {
+    background-color: #1E293B;
+}
+
+.text-safar-yellow {
+    color: #EAB308;
+}
+
+.bg-safar-yellow {
+    background-color: #EAB308;
+}
+
+.bg-safar-yellow:hover {
+    background-color: #CA8A04;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    outline: none;
+}
+
+.calc-btn {
+    flex: 1;
+    background: #2563eb;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.calc-btn:hover {
+    background: #1d4ed8;
+}
+
+.price-box {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #16a34a;
+    border: 2px solid #16a34a;
+}
+
+.submit-btn {
+    width: 100%;
+    background: #EAB308;
+    color: #1E293B;
+    padding: 16px;
+    border-radius: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.submit-btn:hover {
+    background: #facc15;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #22c55e;
+    color: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
