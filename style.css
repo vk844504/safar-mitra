@@ -1,75 +1,155 @@
+/* ===============================
+   BRAND COLORS
+================================ */
 .bg-navy {
-    background-color: #1E293B;
+    background-color: #1E293B;
 }
 
 .text-safar-yellow {
-    color: #EAB308;
+    color: #EAB308;
 }
 
 .bg-safar-yellow {
-    background-color: #EAB308;
+    background-color: #EAB308;
 }
 
 .bg-safar-yellow:hover {
-    background-color: #CA8A04;
+    background-color: #CA8A04;
 }
 
+/* ===============================
+   FORM INPUTS
+================================ */
 .input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #d1d5db;
-    outline: none;
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    font-size: 15px;
+    outline: none;
+    background-color: #ffffff;
 }
 
+.input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* ===============================
+   BUTTONS
+================================ */
 .calc-btn {
-    flex: 1;
-    background: #2563eb;
-    color: white;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: bold;
+    flex: 1;
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: all 0.2s ease;
 }
 
 .calc-btn:hover {
-    background: #1d4ed8;
-}
-
-.price-box {
-    flex: 1;
-    text-align: center;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: bold;
-    color: #16a34a;
-    border: 2px solid #16a34a;
+    background-color: #1d4ed8;
 }
 
 .submit-btn {
-    width: 100%;
-    background: #EAB308;
-    color: #1E293B;
-    padding: 16px;
-    border-radius: 10px;
-    font-weight: 900;
-    text-transform: uppercase;
+    width: 100%;
+    background-color: #EAB308;
+    color: #1E293B;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
 }
 
 .submit-btn:hover {
-    background: #facc15;
+    background-color: #facc15;
+    transform: translateY(-1px);
 }
 
+/* ===============================
+   PRICE BOX
+================================ */
+.price-box {
+    flex: 1;
+    text-align: center;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 800;
+    color: #16a34a;
+    border: 2px solid #16a34a;
+    background-color: #f0fdf4;
+    font-size: 16px;
+}
+
+/* ===============================
+   WHATSAPP FLOAT BUTTON
+================================ */
 .whatsapp-float {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: #22c55e;
-    color: white;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #22c55e;
+    color: #ffffff;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    transition: all 0.2s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #16a34a;
+    transform: scale(1.05);
+}
+
+/* ===============================
+   GOOGLE AUTOCOMPLETE FIXES
+================================ */
+.pac-container {
+    border-radius: 10px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    font-family: inherit;
+    z-index: 9999 !important;
+}
+
+.pac-item {
+    padding: 10px 14px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.pac-item:hover {
+    background-color: #f3f4f6;
+}
+
+.pac-item-query {
+    font-weight: 600;
+}
+
+/* ===============================
+   MOBILE OPTIMIZATION
+================================ */
+@media (max-width: 640px) {
+    .input {
+        font-size: 14px;
+        padding: 13px 14px;
+    }
+
+    .calc-btn,
+    .price-box {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .submit-btn {
+        font-size: 15px;
+        padding: 15px;
+    }
 }
