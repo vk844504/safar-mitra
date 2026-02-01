@@ -1,30 +1,47 @@
+
 let fromAutocomplete;
 let toAutocomplete;
+let fromSelected = false;
+let toSelected = false;
 
 function initAutocomplete() {
     const fromInput = document.getElementById("from");
     const toInput = document.getElementById("to");
 
-    fromAutocomplete = new google.maps.places.Autocomplete(fromInput, {
-        types: ["geocode"],
-        componentRestrictions: { country: "in" }
+    const options = {
+        componentRestrictions: { country: "in" },
+        fields: ["formatted_address", "geometry"],
+        types: ["geocode"]
+    };
+
+    // Create autocomplete objects
+    fromAutocomplete = new google.maps.places.Autocomplete(fromInput, options);
+    toAutocomplete = new google.maps.places.Autocomplete(toInput, options);
+
+    // 🔹 FIX 3 GOES HERE (BIHAR BIAS)
+    const biharBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(24.0, 83.0), // South-West Bihar
+        new google.maps.LatLng(27.5, 88.0)  // North-East Bihar
+    );
+
+    fromAutocomplete.setBounds(biharBounds);
+    toAutocomplete.setBounds(biharBounds);
+    // 🔹 FIX 3 ENDS HERE
+
+    // Detect proper selection
+    fromAutocomplete.addListener("place_changed", () => {
+        fromSelected = true;
     });
 
-    toAutocomplete = new google.maps.places.Autocomplete(toInput, {
-        types: ["geocode"],
-        componentRestrictions: { country: "in" }
+    toAutocomplete.addListener("place_changed", () => {
+        toSelected = true;
     });
+
+    // Reset if user types manually
+    fromInput.addEventListener("input", () => fromSelected = false);
+    toInput.addEventListener("input", () => toSelected = false);
 }
-let finalPrice = 0;
-let finalDistance = 0;
 
-const rates = {
-    "Bolero": 14,
-    "Grand i10": 12,
-    "Ertiga": 15,
-    "Scorpio": 18,
-    "Any Available": 13
-};
 
 async function calculatePrice() {
     const fromPlace = fromAutocomplete.getPlace();
