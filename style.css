@@ -1,45 +1,75 @@
-/* Using @layer ensures these styles work perfectly with Tailwind's utility classes */
-@layer components {
-    
-    /* Global Brand Colors - Defining them here makes them reusable */
-    :root {
-        --navy: #1E293B;
-        --safar-yellow: #EAB308;
-        --safar-yellow-hover: #CA8A04;
-    }
-
-    /* Input Styling with Focus State */
-    .input {
-        @apply w-full p-3 rounded-lg border border-gray-300 outline-none transition-all;
-    }
-    
-    .input:focus {
-        @apply border-yellow-500 ring-2 ring-yellow-200;
-    }
-
-    /* Button Base */
-    .calc-btn {
-        @apply flex-1 bg-blue-600 text-white p-3 rounded-lg font-bold transition-colors hover:bg-blue-700 active:scale-95;
-    }
-
-    .submit-btn {
-        @apply w-full bg-[#EAB308] text-[#1E293B] p-4 rounded-xl font-black uppercase tracking-wider transition-all hover:bg-[#facc15] shadow-lg active:scale-[0.98];
-    }
-
-    /* Price Box Polish */
-    .price-box {
-        @apply flex-1 text-center p-3 rounded-lg font-bold text-green-600 border-2 border-green-600 bg-green-50 animate-pulse;
-    }
-
-    /* WhatsApp Float with Animation */
-    .whatsapp-float {
-        @apply fixed bottom-6 right-6 bg-[#22c55e] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-[100] transition-transform hover:scale-110;
-        animation: bounce-subtle 2s infinite;
-    }
+.bg-navy {
+    background-color: #1E293B;
 }
 
-/* Custom Animation for the WhatsApp button */
-@keyframes bounce-subtle {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+.text-safar-yellow {
+    color: #EAB308;
+}
+
+.bg-safar-yellow {
+    background-color: #EAB308;
+}
+
+.bg-safar-yellow:hover {
+    background-color: #CA8A04;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    outline: none;
+}
+
+.calc-btn {
+    flex: 1;
+    background: #2563eb;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.calc-btn:hover {
+    background: #1d4ed8;
+}
+
+.price-box {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #16a34a;
+    border: 2px solid #16a34a;
+}
+
+.submit-btn {
+    width: 100%;
+    background: #EAB308;
+    color: #1E293B;
+    padding: 16px;
+    border-radius: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.submit-btn:hover {
+    background: #facc15;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #22c55e;
+    color: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
