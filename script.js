@@ -27,8 +27,18 @@ const rates = {
 };
 
 async function calculatePrice() {
-    const from = document.getElementById("from").value.trim();
-    const to = document.getElementById("to").value.trim();
+    const fromPlace = fromAutocomplete.getPlace();
+const toPlace = toAutocomplete.getPlace();
+
+if (!fromPlace || !fromPlace.formatted_address ||
+    !toPlace || !toPlace.formatted_address) {
+    alert("Please select locations from the suggestions");
+    return;
+}
+
+const from = fromPlace.formatted_address;
+const to = toPlace.formatted_address;
+
     const vehicle = document.getElementById("vehicle").value;
 
     if (!from || !to || !vehicle) {
