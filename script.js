@@ -1,3 +1,20 @@
+let fromAutocomplete;
+let toAutocomplete;
+
+function initAutocomplete() {
+    const fromInput = document.getElementById("from");
+    const toInput = document.getElementById("to");
+
+    fromAutocomplete = new google.maps.places.Autocomplete(fromInput, {
+        types: ["geocode"],
+        componentRestrictions: { country: "in" }
+    });
+
+    toAutocomplete = new google.maps.places.Autocomplete(toInput, {
+        types: ["geocode"],
+        componentRestrictions: { country: "in" }
+    });
+}
 let finalPrice = 0;
 let finalDistance = 0;
 
